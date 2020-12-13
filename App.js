@@ -5,7 +5,6 @@
  * @format
  * @flow strict-local
  */
-import { Liquid } from 'liquidjs';
 import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
@@ -16,39 +15,16 @@ import {
   StatusBar,
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-import vacation from './src/templates/vacation';
-
-const getTemplate = async () => {
-  const engine = new Liquid();
-  const tpl = engine.parse(vacation.template);
-
-  const assigned = await engine.render(
-    tpl,
-    vacation.variables.reduce((variables, variable) => {
-      return {
-        ...variables,
-        [variable.key]: variable.value,
-      };
-    }, {}),
-  );
-
-  return assigned;
-};
+import { getTemplate } from './src/services/Template';
 
 const App: () => React$Node = () => {
   const [text, setText] = useState('');
 
   useEffect(() => {
     const loadTemplate = async () => {
-      const assigned = await getTemplate();
+      const assigned = await getTemplate('vacation');
       setText(assigned);
     };
 
@@ -65,9 +41,7 @@ const App: () => React$Node = () => {
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Vacation</Text>
-              <Text style={styles.sectionDescription}>
-                {text}
-              </Text>
+              <Text style={styles.sectionDescription}>{text}</Text>
             </View>
           </View>
         </ScrollView>
