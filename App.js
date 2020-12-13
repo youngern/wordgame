@@ -5,8 +5,8 @@
  * @format
  * @flow strict-local
  */
-
-import React from 'react';
+import { Liquid } from 'liquidjs';
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -24,7 +24,37 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import vacation from './src/templates/vacation';
+
+const getTemplate = async () => {
+  const engine = new Liquid();
+  const tpl = engine.parse(vacation.template);
+
+  const assigned = await engine.render(
+    tpl,
+    vacation.variables.reduce((variables, variable) => {
+      return {
+        ...variables,
+        [variable.key]: variable.value,
+      };
+    }, {}),
+  );
+
+  return assigned;
+};
+
 const App: () => React$Node = () => {
+  const [text, setText] = useState('');
+
+  useEffect(() => {
+    const loadTemplate = async () => {
+      const assigned = await getTemplate();
+      setText(assigned);
+    };
+
+    loadTemplate();
+  }, []);
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -32,39 +62,13 @@ const App: () => React$Node = () => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
+              <Text style={styles.sectionTitle}>Vacation</Text>
               <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
+                {text}
               </Text>
             </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
           </View>
         </ScrollView>
       </SafeAreaView>
