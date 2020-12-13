@@ -4,7 +4,7 @@ export default {
     with your {{ words[1].value }} family. Usually you go to some place
     that is near a/an {{ words[2].value }} or up on a/an {{ words[3].value }}.
     A good vacation place is one where you can ride {{ words[4].value }}
-    or play {{ words[5].value }} or go hunting for {{ words[6].value }} . I like
+    or play {{ words[5].value }} or go hunting for {{ words[6].value }}. I like
     to spend my time {{ words[7].value }} or {{ words[8].value }}.
     When parents go on a vacation, they spend their time eating
     three {{ words[9].value }} a day, and fathers play golf, and mothers
