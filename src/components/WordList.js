@@ -1,11 +1,13 @@
 import React from 'react';
 import {
   FlatList,
-  TextInput,
   StyleSheet,
   TouchableOpacity,
   Text,
+  View,
 } from 'react-native';
+
+import Input from './Input';
 
 const Footer = ({ onPress }) => {
   return (
@@ -23,13 +25,13 @@ const WordList = ({ onFinish, onUpdate, data }) => {
       data={data}
       keyExtractor={(item, index) => index.toString()}
       renderItem={({ item, index }) => (
-        <TextInput
-          style={styles.item}
-          placeholder={item.type}
+        <Input
+          type={item.type}
+          value={item.value}
           onChangeText={onChangeText(index)}
-          defaultValue={item.value.toString()}
         />
       )}
+      ItemSeparatorComponent={() => <View style={styles.separator} />}
       ListFooterComponent={
         <Footer
           onPress={() => {
@@ -46,10 +48,10 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 22,
   },
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
+
+  separator: {
+    height: 5,
+    backgroundColor: 'transparent',
   },
   button: {
     backgroundColor: '#ffa90a',
