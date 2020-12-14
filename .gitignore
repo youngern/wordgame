@@ -21,7 +21,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 *.app.dSYM.zip
-
+.env
 # Android/IntelliJ
 #
 build/
