@@ -91,7 +91,7 @@ export default {
     },
     {
       type: 'adjective',
-      value: 'busy',
+      value: null,
     },
     {
       type: 'number',
