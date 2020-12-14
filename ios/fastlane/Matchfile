@@ -13,7 +13,7 @@ type("development") # The default type, can be: appstore, adhoc, enterprise or d
 # The docs are available on https://docs.fastlane.tools/actions/match
 
 app_identifier(["com.youngern.playground.WordGame"])
-username("ysong028@gmail.com")
+username(ENV["APPLE_ID"])
 
 git_basic_authorization Base64.strict_encode64("#{ENV["GITHUB_USERNAME"]}:#{ENV["GITHUB_PERSONAL_ACCESS_TOKEN"]}")
 
