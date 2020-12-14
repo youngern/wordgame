@@ -27,7 +27,7 @@ const WordList = ({ onFinish, onUpdate, data }) => {
       renderItem={({ item, index }) => (
         <Input
           type={item.type}
-          value={item.value}
+          defaultValue={item.value}
           onChangeText={onChangeText(index)}
         />
       )}

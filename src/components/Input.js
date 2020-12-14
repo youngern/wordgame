@@ -4,11 +4,11 @@ import { Kaede as TextInput } from 'react-native-textinput-effects';
 
 const safeToString = (value) => (value ? value.toString() : '');
 
-const Input = ({ type, value, onChangeText, defaultValue, ...rest }) => (
+const Input = ({ type, defaultValue, onChangeText, ...rest }) => (
   <TextInput
     label={type}
     onChangeText={onChangeText}
-    defaultValue={safeToString(value)}
+    defaultValue={safeToString(defaultValue)}
     labelStyle={styles.label}
     {...rest}
   />
