@@ -12,7 +12,7 @@ import Input from './Input';
 const Footer = ({ onPress }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.button}>
-      <Text style={styles.buttonText}>Read Story</Text>
+      <Text style={styles.buttonText}>Narrate!</Text>
     </TouchableOpacity>
   );
 };
