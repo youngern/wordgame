@@ -1,16 +1,15 @@
 env:
   global:
     - NODE_VERSION=12.18.0
-
+    - secure: g4OJqXjpPJ/Ojk+tHvdc/8e3RFDtpBtQMhSfz31y0khLtA8X+oyHyE0eKSbbRHb59s/LzWL213GOovfIGTAr3NVyJLa2vC2oXtcDVMqffbUrRrDxMsiam2aeiMe5k0fZIs6vWhoYvm5ImvhaFN1qQU6C9knw/yQKkG93c06amaRn9GMivC0mOtP3izaqKHmH7D41hXKQgK4CT4nR87wq99xsT168GNz3Gvdruz8Jy8BC4ajQYQg/e4Fv64OESQukQiBQs94z6ZXv4ux1Rcrcv5UeYB6wMr1QFq0DqqZb0jfzgGkCUUVzjV1eZCxMbyUbjobRNDtJcDl7XfEjTyruE7zzwJ/2DZ/uXlr9yovSWKKAHCtR/P0CaOetG3qS2XivPzGGerOXvpUm1dtXrCBLqZotXmR+0N4pKxKPAa0/cbJJr6tKkIWJzDNIfs0MXbLbrU0XCTxFiQsq19EcjDQfNhIuMlPW7xPQeQ6jGF5BibFiQHzJ44WzUNcenliytqKuXnOLAexX6L15eZnWF/gkbbY15elMHywGGQwGTsTmUOjg572OCf4SKE+ekGADG+YKZdeoYbpQMiCXjV8dtEjb+5iUc2UmlCUlGATqfFZWPxbjudquzVj3xLa7mxZopN7irsuJLGwDueKWg2PVl9gXce/BDTQAj0XRW8ydFxuu9AY=
 install:
   - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
   - export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
   - nvm install $NODE_VERSION
   - nvm use $NODE_VERSION
   - nvm alias default $NODE_VERSION
-
   - npm install -g yarn
-
+  - npm install -g appcenter-cli
 matrix:
   include:
     - os: osx
@@ -21,3 +20,7 @@ matrix:
         - cd ios
         - pod install
         - bundle install
+        - cd ..
+        - appcenter login --token $CODEPUSH_ACCESS_KEY
+        - appcenter codepush release-react -a "ysong028/WordGame" -m -t '*' --description 'Travis'
+        - appcenter logout
