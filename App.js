@@ -6,6 +6,8 @@
  * @flow strict-local
  */
 import React from 'react';
+import codePush from 'react-native-code-push';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -25,4 +27,4 @@ const App: () => React$Node = () => {
   );
 };
 
-export default App;
+export default codePush(App);

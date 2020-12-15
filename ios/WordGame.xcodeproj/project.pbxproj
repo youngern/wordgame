@@ -17,6 +17,8 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* WordGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* WordGameTests.m */; };
+		4BA41F702588451A00D4389C /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4BA41F6E2588451A00D4389C /* Production.xcconfig */; };
+		4BA41F712588451A00D4389C /* Staging.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4BA41F6F2588451A00D4389C /* Staging.xcconfig */; };
 		56ACA86555F3564150851950 /* libPods-WordGame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F324C61C8D829906B4D844FA /* libPods-WordGame.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		88CE7127F0E4620801421A8B /* libPods-WordGame-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C49BD509CAC1CAF1FC3AF14 /* libPods-WordGame-tvOS.a */; };
@@ -55,6 +57,8 @@
 		2D02E47B1E0B4A5D006451C7 /* WordGame-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WordGame-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* WordGame-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WordGame-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E7E94CA4850028774D05D35 /* Pods-WordGame-WordGameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordGame-WordGameTests.debug.xcconfig"; path = "Target Support Files/Pods-WordGame-WordGameTests/Pods-WordGame-WordGameTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4BA41F6E2588451A00D4389C /* Production.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Production.xcconfig; path = WordGame/Production.xcconfig; sourceTree = "<group>"; };
+		4BA41F6F2588451A00D4389C /* Staging.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Staging.xcconfig; path = WordGame/Staging.xcconfig; sourceTree = "<group>"; };
 		4C49BD509CAC1CAF1FC3AF14 /* libPods-WordGame-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WordGame-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		734AB0977C69BB3EEA72E6B1 /* libPods-WordGame-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WordGame-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75974D1280BF95DE20C53F91 /* Pods-WordGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordGame.release.xcconfig"; path = "Target Support Files/Pods-WordGame/Pods-WordGame.release.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 		13B07FAE1A68108700A75B9A /* WordGame */ = {
 			isa = PBXGroup;
 			children = (
+				4BA41F6E2588451A00D4389C /* Production.xcconfig */,
+				4BA41F6F2588451A00D4389C /* Staging.xcconfig */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -341,8 +347,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BA41F712588451A00D4389C /* Staging.xcconfig in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				4BA41F702588451A00D4389C /* Production.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,6 +822,7 @@
 		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BA41F6F2588451A00D4389C /* Staging.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -874,6 +883,7 @@
 		};
 		83CBBA211A601CBA00E9B192 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BA41F6F2588451A00D4389C /* Staging.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
