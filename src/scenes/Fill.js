@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getVariables } from '../services/Template';
-import WordList from '../components/WordList';
+import { WordList } from '../components';
 
 const Fill = ({ navigation }) => {
   const [data, setData] = useState([]);
@@ -13,8 +13,6 @@ const Fill = ({ navigation }) => {
 
     loadVariables();
   }, []);
-
-  console.log('variables', data);
 
   return (
     <WordList

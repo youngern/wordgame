@@ -7,7 +7,7 @@
  */
 import React from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
-import Story from '../components/Story';
+import { Story } from '../components';
 
 const Finished = ({ route }) => {
   const { variables } = route.params;

@@ -13,8 +13,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
 
-import Finished from './src/scenes/Finished';
-import Fill from './src/scenes/Fill';
+import { Finished, Fill } from './src/scenes';
 
 const App: () => React$Node = () => {
   return (
