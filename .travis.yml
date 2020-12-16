@@ -2,6 +2,10 @@ os: osx
 osx_image: xcode11.3
 language: objective-c
 
+branches:
+  only:
+    - master
+
 env:
   global:
     - NODE_VERSION=12.18.0
@@ -14,13 +18,20 @@ install:
   - nvm alias default $NODE_VERSION
   - npm install -g yarn
   - npm install -g appcenter-cli
-
-script:
-  - yarn install
-  - cd ios
-  - pod install
-  - bundle install
-  - cd ..
-  - appcenter login --token $CODEPUSH_ACCESS_KEY
-  - appcenter codepush release-react -a "ysong028/WordGame" -m -t '*' --description 'Travis'
-  - appcenter logout
+jobs:
+  include:
+    - stage: setup
+      script:
+        - yarn install
+        - cd ios
+        - pod install
+        - bundle install
+        - cd ..
+    - stage: test
+      script:
+        - yarn test
+    - stage: codepush
+      script:
+        - appcenter login --token $CODEPUSH_ACCESS_KEY
+        - appcenter codepush release-react -a "ysong028/WordGame" -m -t '*' --description 'Travis'
+        - appcenter logout

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import update from 'immutability-helper';
 import { getVariables } from '../services/Template';
 import WordList from '../components/WordList';
 
@@ -15,8 +14,7 @@ const Fill = ({ navigation }) => {
     loadVariables();
   }, []);
 
-  const onUpdate = (key, val) =>
-    setData(update(data, { [key]: { value: { $set: val } } }));
+  console.log('variables', data);
 
   return (
     <WordList
@@ -24,7 +22,6 @@ const Fill = ({ navigation }) => {
       onFinish={(variables) => {
         navigation.navigate('Finished', { variables });
       }}
-      onUpdate={onUpdate}
     />
   );
 };

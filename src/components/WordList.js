@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   FlatList,
   StyleSheet,
@@ -6,7 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
-
+import update from 'immutability-helper';
 import Input from './Input';
 
 const Footer = ({ onPress }) => {
@@ -17,16 +17,26 @@ const Footer = ({ onPress }) => {
   );
 };
 
-const WordList = ({ onFinish, onUpdate, data }) => {
-  const onChangeText = (key) => (val) => onUpdate(key, val);
+const WordList = ({ onFinish, data }) => {
+  const [list, setList] = useState(data);
+
+  useEffect(() => {
+    setList(data);
+  }, [data]);
+
+  const onChangeText = (key) => (val) => {
+    setList(update(list, { [key]: { value: { $set: val } } }));
+  };
 
   return (
     <FlatList
-      data={data}
+      data={list}
       keyExtractor={(item, index) => index.toString()}
       renderItem={({ item, index }) => (
         <Input
-          type={item.type}
+          accessibilityLabel="answer input"
+          accessibilityHint="input"
+          label={item.type}
           defaultValue={item.value}
           onChangeText={onChangeText(index)}
         />
@@ -35,7 +45,7 @@ const WordList = ({ onFinish, onUpdate, data }) => {
       ListFooterComponent={
         <Footer
           onPress={() => {
-            onFinish(data);
+            onFinish(list);
           }}
         />
       }
