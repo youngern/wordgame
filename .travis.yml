@@ -18,20 +18,13 @@ install:
   - nvm alias default $NODE_VERSION
   - npm install -g yarn
   - npm install -g appcenter-cli
-jobs:
-  include:
-    - stage: setup
-      script:
-        - yarn install
-        - cd ios
-        - pod install
-        - bundle install
-        - cd ..
-    - stage: test
-      script:
-        - yarn test
-    - stage: codepush
-      script:
-        - appcenter login --token $CODEPUSH_ACCESS_KEY
-        - appcenter codepush release-react -a "ysong028/WordGame" -m -t '*' --description 'Travis'
-        - appcenter logout
+script:
+  - yarn install
+  - cd ios
+  - pod install
+  - bundle install
+  - cd ..
+  - yarn test
+  - appcenter login --token $CODEPUSH_ACCESS_KEY
+  - appcenter codepush release-react -a "ysong028/WordGame" -m -t '*' --description 'Travis'
+  - appcenter logout
