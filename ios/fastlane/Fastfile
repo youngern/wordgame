@@ -26,12 +26,12 @@ platform :ios do
   desc "create keychain for sigining certs"
   lane :keychain do
     create_keychain(
-      name: 'certificates',
+      name: ENV["MATCH_KEYCHAIN_NAME"],
+      password: ENV["MATCH_KEYCHAIN_PASSWORD"],
       default_keychain: false,
       unlock: true,
       timeout: 3600,
-      lock_when_sleeps: true,
-      require_create: true
+      lock_when_sleeps: true
     )
   end
 
