@@ -23,7 +23,7 @@ install:
 script:
   # - yarn install
   # - yarn test
-  # - cd ios
+  - cd ios
   # - pod install
   - bundle install
   - fastlane setup
