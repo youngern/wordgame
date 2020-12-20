@@ -13,15 +13,27 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-# setup_travis TODO
+setup_travis
 
 default_platform(:ios)
 
 platform :ios do
+  desc "Load environment variables"
+  lane :setup do
+    load_env
+  end
+
+  desc "Retrieve and resync certificates"
+  lane :certificates do
+    match(type: 'development', readonly: is_ci)
+    match(type: 'appstore', readonly: is_ci)
+  end
+
   desc "Push a new beta build to TestFlight"
   lane :beta do
+    match(type: 'appstore', readonly: is_ci)
     increment_build_number(xcodeproj: "WordGame.xcodeproj")
-    build_app(workspace: "WordGame.xcworkspace", scheme: "WordGame")
-    upload_to_testflight
+    build_app(workspace: "WordGame.xcworkspace", scheme: "WordGame")  
+    upload_to_testflight(api_key_path: 'fastlane/appstore.json')
   end
 end

@@ -16,6 +16,16 @@ or alternatively using `brew install fastlane`
 
 # Available Actions
 ## iOS
+### ios setup
+```
+fastlane ios setup
+```
+Load environment variables
+### ios certificates
+```
+fastlane ios certificates
+```
+Retrieve and resync certificates
 ### ios beta
 ```
 fastlane ios beta

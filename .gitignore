@@ -24,6 +24,8 @@ DerivedData
 .env
 Production.xcconfig
 Staging.xcconfig
+*.p8
+appstore.json
 # Android/IntelliJ
 #
 build/
