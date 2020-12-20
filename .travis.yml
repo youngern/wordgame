@@ -27,4 +27,5 @@ script:
   - pod install
   - bundle install
   - fastlane setup
+  - fastlane keychain
   - fastlane certificates
