@@ -23,6 +23,18 @@ platform :ios do
     load_env
   end
 
+  desc "create keychain for sigining certs"
+  lane :keychain do
+    create_keychain(
+      name: 'certificates',
+      default_keychain: false,
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: true,
+      require_create: true
+    )
+  end
+
   desc "Retrieve and resync certificates"
   lane :certificates do
     match(type: 'development', readonly: is_ci)
