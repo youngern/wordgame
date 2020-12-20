@@ -17,7 +17,7 @@ install:
   - nvm use $NODE_VERSION
   - nvm alias default $NODE_VERSION
   - npm install -g yarn
-  - curl -s https://packagecloud.io/install/repositories/segment/chamber/script.deb.sh | sudo bash
+  - brew install chamber
   - sudo apt-get install -y chamber
   - pip install awscli --upgrade --user
   - npm install -g appcenter-cli
