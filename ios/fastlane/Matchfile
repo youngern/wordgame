@@ -1,6 +1,9 @@
 storage_mode("s3")
 
-s3_bucket("youngern.certificates")
+s3_bucket ENV["MATCH_S3_BUCKET"]
+s3_region ENV["MATCH_S3_REGION"]
+s3_secret_access_key ENV["MATCH_S3_SECRET_ACCESS_KEY"]
+s3_access_key ENV["MATCH_S3_ACCESS_KEY_ID"]
 
 type("development") # The default type, can be: appstore, adhoc, enterprise or development
 
