@@ -7,7 +7,7 @@ module Fastlane
     class LoadEnvAction < Action
       def self.run(params)
         # fastlane will take care of reading in the parameter and fetching the environment variable:
-
+        sh "chamber export --format dotenv wordgame/env | sed -e 's/\"//g' > ./WordGame/Staging.xcconfig"
         sh "chamber export --format dotenv fastlane/env | sed -e 's/\"//g' > ./fastlane/.env"
         sh "chamber export --format json credentials/appstore | sed 's/\\\\\\\\n/\\\\n/g' > ./fastlane/appstore.json"
 
