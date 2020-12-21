@@ -27,4 +27,4 @@ script:
   - pod install
   - bundle install
   - fastlane setup
-  - fastlane beta
+  - travis_wait fastlane beta
