@@ -23,22 +23,10 @@ platform :ios do
     load_env
   end
 
-  desc "create keychain for sigining certs"
-  lane :keychain do
-    create_keychain(
-      name: ENV["MATCH_KEYCHAIN_NAME"],
-      password: ENV["MATCH_KEYCHAIN_PASSWORD"],
-      default_keychain: is_ci,
-      unlock: true,
-      timeout: 3600,
-      lock_when_sleeps: true
-    )
-  end
-
   desc "Retrieve and resync certificates"
   lane :certificates do
     match(type: 'development', readonly: is_ci)
-    # match(type: 'appstore', readonly: is_ci)
+    match(type: 'appstore', readonly: is_ci)
   end
 
   desc "Push a new beta build to TestFlight"
