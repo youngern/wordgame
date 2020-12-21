@@ -38,7 +38,7 @@ platform :ios do
   desc "Retrieve and resync certificates"
   lane :certificates do
     match(type: 'development', readonly: is_ci)
-    match(type: 'appstore', readonly: is_ci)
+    # match(type: 'appstore', readonly: is_ci)
   end
 
   desc "Push a new beta build to TestFlight"
