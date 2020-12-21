@@ -21,11 +21,6 @@ or alternatively using `brew install fastlane`
 fastlane ios setup
 ```
 Load environment variables
-### ios keychain
-```
-fastlane ios keychain
-```
-create keychain for sigining certs
 ### ios certificates
 ```
 fastlane ios certificates
