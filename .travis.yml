@@ -11,20 +11,20 @@ env:
     - secure: CACoC8mdokKIBV60hQBDegDpPqXpfHAIOxSqm05MzhBiTlZBuSW4Tly06G4Dq55h6X0CE5TAyIvxqc0wJauMyJqX2I+HGxZH/66yNu+DldUxa0n+kwcRtochGMHCWND+ZJaasGiZSSeot4VqKgQosxxC+Q7X8pv9UljMs3stlyU3WP+3B/3aHQhwA5DZhCP1eEofgt/6bw3AuE1eIsMfW/jbARbuIVc8cXddJvQEfrPF7hbPZFX+TFlINKPmOOFm1b0SuQlHJLNrwwnAYHGylHMda921PjKT1uUJCP/LfLAlY9p0UgfmueOSj8aMdC1Z/M3PodyOdHsl4pqp3xxz+JmhxGIu+LtsTbP8YattB8ZjOgdRZD5ZBgOlETYSGXXI2zd9zSfBZT7jTMN4xTtSdoWvrOESpyLm0LDOo1WbtynAqWhvacXJGDmRYDE5J1vCyCSkcw9obSGoTbw5WBGNKQYfvixynRz2rh+BXL1vMrfLZPyPjurp4iyaHV+zXLCQMTLEtAFI5E0XbPva7e6bzzJbZmemXMe6qUURKz2SkWQvI8bO6Xtljz0WSt07eF9to4uVKKgdEp4XoqbGejJy98sSnv2CA0RkLy8K/8NxeRpqoYNW4YHYxwyUz/QzmXhJ64A3kwkXABewX57n4pqk4pBf3ihSjQ9Go85kpHCNK68=
     - secure: TqzrHRoVM1b7p2jSH3QPFs3bW8SrUXgut53ODtQWwDQXbWSivfd6mf4COBMZNRSuopWs+UQVSCiZNquiuDJjwIihaa2ZTsSF9cBJpKa5rno7q0PzjcUNkbeyF+eFWi06HL7Kzdr8Cm76ihfkRgCOlxxQZJVjSFJf4ErXqTgRPzH7aYSV3mmNy8w73Wxl5F6wY7bfLKSQhnGHOcYMUsooHI2+vcJwiYhJ+KPjia3tyflUS0T341+Z6AbICnfhsBlaOuPXjEdLAfj7ssUR2JZLy2Y/LM3OZLrHvy1x4lIlGfNvWW3ju5A1u5ptY0LssPBorKYApCcttive9pnqqTdkz1Fb/UHIVDaptM1QHFsptvMt7wfkYQ6qq2ucDe+y18LSWHsihVM2Da9DysX1dIsGI+om2NvxYRG9GhYDsY11grXp8wN2L2vLK8+vLLCn395dGTrJapvR5CjRg/F3ToGPPTjB0LRGuuSHIeO7laP+G3aOJGB8QEwyy7gRcDbs+awtKbepNA+CqS8d7HHC1KG6jagrN1D0jsFGTc5TZBOvFSSwqUSe9KN42okMRk150RW5LHH9TDxc9AczdfJrpYC1lwqXoyK80JrGvzutDEV4eQK2G5dtJF51/wwL5Du0XZJNaz6oYQlU7/QAZzY0DzZHJoNx9MO5Z4ORer2Dv85vNOY=
 install:
-  # - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
-  # - export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-  # - nvm install $NODE_VERSION
-  # - nvm use $NODE_VERSION
-  # - nvm alias default $NODE_VERSION
-  # - npm install -g yarn
+  - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+  - export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  - nvm install $NODE_VERSION
+  - nvm use $NODE_VERSION
+  - nvm alias default $NODE_VERSION
+  - npm install -g yarn
   - brew install chamber
   - pip install awscli --upgrade --user
   # - npm install -g appcenter-cli
 script:
-  # - yarn install
-  # - yarn test
+  - yarn install
+  - yarn test
   - cd ios
-  # - pod install
+  - pod install
   - bundle install
   - fastlane setup
-  - fastlane certificates
+  - fastlane beta
